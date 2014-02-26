@@ -1,0 +1,9 @@
+<%
+   projects = User.current.memberships.collect(&:project).compact.select(&:active?).uniq
+   s = render_project_nested_lists(projects) do |project|
+     link_to_project(project, {}, :class => "#{project.css_classes}")
+   end
+%>
+
+<h3><%= l(:my_projects) %></h3>
+<%= s %>
