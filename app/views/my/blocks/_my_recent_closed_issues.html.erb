@@ -1,0 +1,11 @@
+<%
+  current_user_ids = [User.current.id] + User.current.group_ids
+  issues = Issue.visible
+      .joins("INNER JOIN #{IssueStatus.table_name} ON #{IssueStatus.table_name}.id = status_id")
+      .where(["assigned_to_id IN (?) AND #{IssueStatus.table_name}.is_closed = 1", current_user_ids])
+      .order(closed_on: :desc)
+%>
+
+<h3><%= l(:my_recent_closed_issues) %></h3>
+
+<%= render :partial => 'issues/list_simple', :locals => {:issues => issues.first(10)} %>
