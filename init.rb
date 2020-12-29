@@ -4,5 +4,5 @@ Redmine::Plugin.register :redmine_makotokw_mypage_blocks do
   description 'MyPage blocks for Redmine'
   version '0.1.0'
   url 'https://github.com/makotokw/redmine_makotokw_mypage_blocks'
-  author_url 'http://makotokw.com'
+  author_url 'https://makotokw.com'
 end
